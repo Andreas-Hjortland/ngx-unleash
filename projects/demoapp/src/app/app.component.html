@@ -1,0 +1,14 @@
+<h1>Angular Demo App</h1>
+<nav>
+    <ul>
+        @for (item of availableFeatures; track item) {
+        <li><a [routerLink]="'feature' + $index">Feature {{ item }}</a></li>
+        }
+    </ul>
+</nav>
+
+<div *feature="availableFeatures[0]; let feature = feature; else disabled">Feature <code>{{ feature() }}</code> enabled
+</div>
+<ng-template #disabled let-feature=feature>Feature <code>{{ feature() }}</code> disabled</ng-template>
+
+<router-outlet />
